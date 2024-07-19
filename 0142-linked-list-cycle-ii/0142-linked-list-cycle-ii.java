@@ -25,7 +25,7 @@ public class Solution {
             head= head.next;
             slow= slow.next;
         }
-
+        System.gc();
         return head;
 
     }
