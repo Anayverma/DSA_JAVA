@@ -10,6 +10,7 @@ class Solution {
         for (int i = 0; i < k; i++) {
             res[i] = pq.poll();
         }
+        System.gc();
         
         return res;
     }
