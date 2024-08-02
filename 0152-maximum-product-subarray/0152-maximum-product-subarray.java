@@ -1,25 +1,14 @@
 class Solution {
-    public static int maxProduct(int[] arr) {
-        int n = arr.length; // Size of the array
-
-        int pre = 1, suff = 1;
-        int ans = Integer.MIN_VALUE;
-
+     public int maxProduct(int[] a) {
+        double prefix = 1, suffix = 1, ans = Integer.MIN_VALUE;
+        int n = a.length;
         for (int i = 0; i < n; i++) {
-            // If pre or suff becomes zero, reset them to 1
-            if (pre == 0) pre = 1;
-            if (suff == 0) suff = 1;
-
-            // Calculate prefix product
-            pre *= arr[i];
-
-            // Calculate suffix product
-            suff *= arr[n - i - 1];
-
-            // Update the answer with the maximum of the prefix or suffix product
-            ans = Math.max(ans, Math.max(pre, suff));
+            prefix = (prefix == 0 ? 1 : prefix);
+            suffix = (suffix == 0 ? 1 : suffix);
+            prefix *= a[i];
+            suffix *= a[n - i - 1];
+            ans = Math.max(ans, Math.max(prefix, suffix));
         }
-
-        return ans;
+        return (int) ans;
     }
 }
