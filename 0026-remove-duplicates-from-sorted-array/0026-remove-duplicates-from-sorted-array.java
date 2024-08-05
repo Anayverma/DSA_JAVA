@@ -8,6 +8,7 @@ class Solution {
                 prev = len - 1; // Corrected this line
             }
         }
+        System.gc();
         return len;
     }
 }
