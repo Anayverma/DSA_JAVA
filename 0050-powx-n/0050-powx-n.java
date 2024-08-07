@@ -1,21 +1,21 @@
 class Solution {
     public double myPow(double x, int n) {
-        int sign=0;
-        if(n<0) sign=1;
-        double res=1.0;
-        if(n%2==0)  res=x*helper(x,Math.abs(n));
-        else res=helper(x,Math.abs(n));
-        return sign==1?(1/res):res;
+        if (n == 0) return 1.0;
+        long N = n;
+        if (N < 0) {
+            x = 1 / x;
+            N = -N;
+        }
+        return helper(x, N);
     }
-    public double helper(double x,int n){
-        // if(n==0) return 1.0;
-        // else if(n==1) return x;
-        // else return x*helper(x,n-1);
-        if(n==0) return 1.0;
-        else if( n==1) return x;
-        else if(n%2==0) return x*x*helper(x,n/2);
-        else return x*x*helper(x,n-(n/2));
 
-
+    public double helper(double x, long n) {
+        if (n == 0) return 1.0;
+        double half = helper(x, n / 2);
+        if (n % 2 == 0) {
+            return half * half;
+        } else {
+            return half * half * x;
+        }
     }
 }
