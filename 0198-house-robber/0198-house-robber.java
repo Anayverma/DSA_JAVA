@@ -3,6 +3,7 @@ class Solution {
         int dp[] = new int[nums.length];
         Arrays.fill(dp, -1);
         return helper(nums, dp, nums.length - 1);
+        System.rc();
     }
 
     public int helper(int[] nums, int[] dp, int n) {
