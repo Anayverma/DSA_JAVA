@@ -1,10 +1,8 @@
 import java.io.*;
 class Solution
-{
-    public int romanToInt(String s)
+{   public int romanToInt(String s)
     {
-        int sum=0;
-        int n[]=new int[s.length()+1];
+        int n[]=new int[s.length()+1];int sum=0;
        for(int i=s.length()-1;i>=0;i--)
         {
             switch(s.charAt(i))
@@ -33,16 +31,9 @@ class Solution
             }
             if(n[i]<n[i+1])
             n[i]*=-1;
-            
             sum+=n[i];
         }
 
         return sum;
-   }
-   public static void main()throws IOException
-   {
-       BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-       Solution ob=new Solution();
-       System.out.println(ob.romanToInt(br.readLine()));
    }
 }
