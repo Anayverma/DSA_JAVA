@@ -15,38 +15,24 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        Queue <TreeNode> tree= new LinkedList<>();
-        
-
+        Queue<TreeNode> tree=new LinkedList<>();
         tree.add(root);
-        List<List<Integer>> res= new ArrayList<>();
-        if (root == null) {
-            return res;  // Return an empty result
-        }
-        while(tree.size()!=0){
-            int l=tree.size();
-            List<Integer> arr=new ArrayList<>();
-            for(int i=0;i<l;i++){
-            TreeNode test=tree.poll();
-                arr.add(test.val);
-                if(test.left!=null) tree.add(test.left);
-                if(test.right!=null) tree.add(test.right);
+        List<List<Integer>> result=new ArrayList<>();
+        if(root==null) return result;
+        while(!tree.isEmpty()){
+            int len=tree.size();
+            int i=0;
+            List<Integer> list=new ArrayList<>();
+            while(i<len){
+                TreeNode node= tree.remove();
+                System.out.println(node.val);
+                list.add(node.val);
+               if (node.left != null) tree.add(node.left);   // Add left child if not null
+                if (node.right != null) tree.add(node.right);
+                i++;
             }
-            res.add(arr);
+            result.add(list);
         }
-        
-
-
-    return res;
-        // Queue<TreeNode> tree=new Queue<>();
-        // tree.add(root);
-        // ArrayList<ArrayList<Integer>> res= new ArrayList<>();
-        // while(!tree.isEmpty())
-        // {
-        //     TreeNode node = tree.poll();
-        //     res.add(new ArrayList<>(node.val));
-        //     if(node.left!=null)ree.add(node.left);
-        //     if(node.right!=null)tree.add(node.right);
-        // }
+        return result;
     }
 }
